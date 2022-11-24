@@ -7,13 +7,24 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+
       <li>
-        <Link>Login</Link>
+        <Link to="/category/horror">Horror</Link>
+      </li>
+      <li>
+        <Link to="/category/classics">Classics</Link>
+      </li>
+
+      <li>
+        <Link to="/category/fantasy">Fantasy</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-black text-white flex justify-between">
+    <div data-theme="retro" className="navbar flex justify-between">
       <div className="navbar-start ">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

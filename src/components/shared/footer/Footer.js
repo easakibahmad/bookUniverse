@@ -4,7 +4,7 @@ import footerImg from "../../../assets/footerImg.jpg";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-black text-neutral-content text-white">
+    <footer data-theme="retro" className="footer p-10  ">
       <div>
         <img src={footerImg} className="w-48 h-20 rounded" alt="" />
         <p>
