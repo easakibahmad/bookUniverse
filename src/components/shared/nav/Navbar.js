@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/categories")
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+  }, []);
+
   const menuItem = (
     <>
       <li>
         <Link to="/">Home</Link>
       </li>
 
-      <li>
-        <Link to="/category/classics">Classics</Link>
-      </li>
-      <li>
-        <Link to="/category/horror">Horror</Link>
-      </li>
-      <li>
-        <Link to="/category/fantasy">Fantasy</Link>
-      </li>
+      {category.map((item) => (
+        <li key={item._id}>
+          <Link to={`/category/${item._id}`}>{item.category}</Link>
+        </li>
+      ))}
       <li>
         <Link to="/blogs">BLogs</Link>
       </li>

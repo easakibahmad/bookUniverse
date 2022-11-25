@@ -18,16 +18,19 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/category/classics",
+        path: "/category/63801372f12837a2b8673400",
         element: <Classics></Classics>,
+        loader: () => fetch("http://localhost:5000/classics"),
       },
       {
-        path: "/category/horror",
+        path: "/category/63801372f12837a2b8673401",
         element: <Horror></Horror>,
+        loader: () => fetch("http://localhost:5000/horror"),
       },
       {
-        path: "/category/fantasy",
+        path: "/category/63801372f12837a2b8673402",
         element: <Fantasy></Fantasy>,
+        loader: () => fetch("http://localhost:5000/fantasy"),
       },
       {
         path: "/login",
