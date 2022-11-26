@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookModal = ({ booksDetail, setBooksDetail }) => {
   const { name, resellPrice } = booksDetail;
@@ -12,7 +12,7 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
     event.preventDefault();
 
     const form = event.target;
-    const name = form.name.value;
+    const userName = form.name.value;
     const email = form.email.value;
     const productName = form.productName.value;
     const productPrice = form.productPrice.value;
@@ -20,20 +20,18 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
     const location = form.location.value;
 
     const productDataFromModal = {
-      name,
+      userName,
       email,
       productName,
       productPrice,
       phoneNumber,
       location,
     };
-    toast(`${name} is booked successfully!!`);
-    setBooksDetail(null);
-
+    toast(`${productName} is booked successfully!! please close the modal`);
     console.log(productDataFromModal);
   };
   return (
-    <>
+    <div>
       <input type="checkbox" id="bookNowModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -97,21 +95,21 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
               value="Submit"
             />
           </form>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          ></ToastContainer>
         </div>
       </div>
-    </>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      ></ToastContainer>
+    </div>
   );
 };
 

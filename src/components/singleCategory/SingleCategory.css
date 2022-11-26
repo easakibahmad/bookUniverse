@@ -1,0 +1,5 @@
+.category-p:hover {
+    background-color: bisque;
+    color: red;
+    text-decoration: underline;
+}

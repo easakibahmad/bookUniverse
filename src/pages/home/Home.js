@@ -1,7 +1,12 @@
 import React from "react";
+import CategorySection from "../../components/categorySection/CategorySection";
 
 const Home = () => {
-  return <div>home</div>;
+  return (
+    <div>
+      <CategorySection></CategorySection>
+    </div>
+  );
 };
 
 export default Home;
