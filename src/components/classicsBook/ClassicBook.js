@@ -1,6 +1,7 @@
 import React from "react";
+import "./ClassicBook.css";
 
-const ClassicBook = ({ item }) => {
+const ClassicBook = ({ item, setBooksDetail }) => {
   const {
     img,
     location,
@@ -41,6 +42,13 @@ const ClassicBook = ({ item }) => {
           </p>
         </div>
       </div>
+      <label
+        htmlFor="bookNowModal"
+        className="btn border-none w-full rounded mx-auto bg-pink-500 text-white font-bold p-2"
+        onClick={() => setBooksDetail(item)}
+      >
+        <div className="flex justify-center">Book Now</div>
+      </label>
     </div>
   );
 };

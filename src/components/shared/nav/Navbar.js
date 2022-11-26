@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Navbar = () => {
   const [category, setCategory] = useState([]);
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/categories")
@@ -10,6 +15,15 @@ const Navbar = () => {
       .then((data) => setCategory(data));
   }, []);
 
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const menuItem = (
     <>
       <li>
@@ -24,9 +38,17 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">BLogs</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+      {!user?.uid && (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+
+      {user?.uid && (
+        <li>
+          <Link onClick={handleLogOut}>Logout</Link>
+        </li>
+      )}
     </>
   );
   return (
