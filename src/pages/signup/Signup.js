@@ -20,11 +20,11 @@ const Signup = () => {
     const password = form.password.value;
     const name = form.name.value;
     const selectOption = form.selectOption.value;
-    console.log(selectOption);
+    // console.log(selectOption);
     const profile = {
       displayName: name,
     };
-
+    console.log(profile);
     const handleProfileInfo = () => {
       updateUserProfile(profile)
         .then(() => {
@@ -98,7 +98,7 @@ const Signup = () => {
                   name="selectOption"
                   className="select select-bordered w-full"
                 >
-                  <option value="User">User</option>
+                  <option value="User">Buyers</option>
                   <option value="Seller">Seller</option>
                 </select>
               </div>

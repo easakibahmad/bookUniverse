@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 import "./SingleBook.css";
 
 const SingleBook = ({ item, setBooksDetail }) => {
+  const { user } = useContext(AuthContext);
   const {
     img,
     location,
@@ -10,6 +12,7 @@ const SingleBook = ({ item, setBooksDetail }) => {
     postedTime,
     resellPrice,
     yearsOfUsed,
+    sellerName,
   } = item;
 
   return (
@@ -36,6 +39,10 @@ const SingleBook = ({ item, setBooksDetail }) => {
           <p>
             <span className="text-sm">Used: </span>
             {yearsOfUsed}y
+          </p>
+          <p className="text-xl py-1">
+            <span className="text-sm">Seller:</span>{" "}
+            <span className="font-bold">{sellerName}</span>
           </p>
           <p>
             <span className="text-sm">Location:</span> {location}

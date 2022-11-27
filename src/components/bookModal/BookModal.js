@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const BookModal = ({ booksDetail, setBooksDetail }) => {
   const { name, resellPrice } = booksDetail;
@@ -12,7 +11,7 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
     event.preventDefault();
 
     const form = event.target;
-    const userName = form.name.value;
+    const buyerName = form.name.value;
     const email = form.email.value;
     const productName = form.productName.value;
     const productPrice = form.productPrice.value;
@@ -20,14 +19,29 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
     const location = form.location.value;
 
     const productDataFromModal = {
-      userName,
+      buyerName,
       email,
       productName,
       productPrice,
       phoneNumber,
       location,
     };
-    toast(`${productName} is booked successfully!! please close the modal`);
+
+    fetch("http://localhost:4000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productDataFromModal),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Booked Successfully!! Close the modal now. Thanks!!");
+        }
+      });
+    // setBooksDetail(null);
+
     console.log(productDataFromModal);
   };
   return (
@@ -95,20 +109,20 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
               value="Submit"
             />
           </form>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+            gutter={8}
+            containerClassName=""
+            containerStyle={{}}
+            toastOptions={{
+              // Define default options
+              className: "",
+              duration: 2000,
+            }}
+          />
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      ></ToastContainer>
     </div>
   );
 };

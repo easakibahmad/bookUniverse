@@ -10,7 +10,7 @@ const BestSelling = () => {
   return (
     <div className="p-12">
       <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-        Best selling products
+        Best re-selling books
       </p>
 
       <div className="py-4 gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
