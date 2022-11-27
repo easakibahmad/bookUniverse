@@ -10,7 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("http://localhost:4000/categories")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);

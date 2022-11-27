@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
             <Classics></Classics>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/classics"),
+        loader: () => fetch("http://localhost:4000/classics"),
       },
       {
         path: "/category/63801372f12837a2b8673401",
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             <Horror></Horror>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/horror"),
+        loader: () => fetch("http://localhost:4000/horror"),
       },
       {
         path: "/category/63801372f12837a2b8673402",
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
             <Fantasy></Fantasy>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/fantasy"),
+        loader: () => fetch("http://localhost:4000/fantasy"),
       },
       {
         path: "/login",

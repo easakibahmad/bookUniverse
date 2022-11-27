@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import ClassicBook from "../../components/classicsBook/ClassicBook";
 import BookModal from "../../components/bookModal/BookModal";
+import SingleBook from "../../components/singleBook/SingleBook";
 
 const Classics = () => {
   const dataClassics = useLoaderData();
@@ -14,13 +14,13 @@ const Classics = () => {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4 sm:p-12 lg:p-16 lg:grid-cols-3">
         {dataClassics.map((item) => (
-          <ClassicBook
+          <SingleBook
             key={item._id}
             setBooksDetail={setBooksDetail}
             item={item}
           >
             item
-          </ClassicBook>
+          </SingleBook>
         ))}
       </div>
       {booksDetail && (

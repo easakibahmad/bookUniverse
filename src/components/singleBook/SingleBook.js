@@ -1,7 +1,7 @@
 import React from "react";
-import "./ClassicBook.css";
+import "./SingleBook.css";
 
-const ClassicBook = ({ item, setBooksDetail }) => {
+const SingleBook = ({ item, setBooksDetail }) => {
   const {
     img,
     location,
@@ -53,4 +53,4 @@ const ClassicBook = ({ item, setBooksDetail }) => {
   );
 };
 
-export default ClassicBook;
+export default SingleBook;
