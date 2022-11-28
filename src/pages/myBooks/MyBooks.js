@@ -9,7 +9,9 @@ const MyBooks = () => {
 
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:4000/classicsSpecific?email=${user?.email}`)
+    fetch(
+      `https://book-universe-server.vercel.app/classicsSpecific?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setClassicData(data);
@@ -17,7 +19,9 @@ const MyBooks = () => {
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/fantasySpecific?email=${user?.email}`)
+    fetch(
+      `https://book-universe-server.vercel.app/fantasySpecific?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setFantasyData(data);
@@ -25,7 +29,9 @@ const MyBooks = () => {
   }, [user?.email]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/horrorSpecific?email=${user?.email}`)
+    fetch(
+      `https://book-universe-server.vercel.app/horrorSpecific?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setHorrorData(data);
@@ -35,7 +41,7 @@ const MyBooks = () => {
   const handleDeleteClassic = (id) => {
     const proceedToDelete = window.confirm("Are you sure to delete?");
     if (proceedToDelete) {
-      fetch(`http://localhost:4000/classics/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/classics/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -53,7 +59,7 @@ const MyBooks = () => {
   const handleDeleteFantasy = (id) => {
     const proceedToDelete = window.confirm("Are you sure to delete?");
     if (proceedToDelete) {
-      fetch(`http://localhost:4000/fantasy/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/fantasy/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -71,7 +77,7 @@ const MyBooks = () => {
   const handleDeleteHorror = (id) => {
     const proceedToDelete = window.confirm("Are you sure to delete?");
     if (proceedToDelete) {
-      fetch(`http://localhost:4000/horror/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/horror/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -90,7 +96,7 @@ const MyBooks = () => {
     const advertise = "advertise";
     const proceedToAdvertise = window.confirm("Are you sure to advertise?");
     if (proceedToAdvertise) {
-      fetch(`http://localhost:4000/classics/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/classics/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -117,7 +123,7 @@ const MyBooks = () => {
     const advertise = "advertise";
     const proceedToAdvertise = window.confirm("Are you sure to advertise?");
     if (proceedToAdvertise) {
-      fetch(`http://localhost:4000/fantasy/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/fantasy/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -145,7 +151,7 @@ const MyBooks = () => {
     const advertise = "advertise";
     const proceedToAdvertise = window.confirm("Are you sure to advertise?");
     if (proceedToAdvertise) {
-      fetch(`http://localhost:4000/horror/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/horror/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

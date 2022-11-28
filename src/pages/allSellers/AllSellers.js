@@ -5,7 +5,7 @@ const AllSellers = () => {
   const [allSellers, setAllSellers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/sellers")
+    fetch("https://book-universe-server.vercel.app/sellers")
       .then((res) => res.json())
       .then((data) => setAllSellers(data));
   }, []);
@@ -13,7 +13,7 @@ const AllSellers = () => {
   const handleDelete = (id) => {
     const proceedToDelete = window.confirm("Are you sure to delete?");
     if (proceedToDelete) {
-      fetch(`http://localhost:4000/sellers/${id}`, {
+      fetch(`https://book-universe-server.vercel.app/sellers/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

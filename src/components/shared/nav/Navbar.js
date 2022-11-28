@@ -16,7 +16,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:4000/categories")
+    fetch("https://book-universe-server.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);

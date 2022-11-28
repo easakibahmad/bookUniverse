@@ -10,17 +10,17 @@ const Home = () => {
   const [horrorAdd, setHorrorAdd] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/classicAdvertise")
+    fetch("https://book-universe-server.vercel.app/classicAdvertise")
       .then((res) => res.json())
       .then((data) => setClassicAdd(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:4000/fantasyAdvertise")
+    fetch("https://book-universe-server.vercel.app/fantasyAdvertise")
       .then((res) => res.json())
       .then((data) => setFantasyAdd(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:4000/horrorAdvertise")
+    fetch("https://book-universe-server.vercel.app/horrorAdvertise")
       .then((res) => res.json())
       .then((data) => setHorrorAdd(data));
   }, []);

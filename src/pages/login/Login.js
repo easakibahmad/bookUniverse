@@ -56,7 +56,7 @@ const Login = () => {
 
   const saveUser = (name, email) => {
     const buyer = { name, email };
-    fetch("http://localhost:4000/buyers", {
+    fetch("https://book-universe-server.vercel.app/buyers", {
       method: "POST",
       headers: {
         "content-type": "application/json",

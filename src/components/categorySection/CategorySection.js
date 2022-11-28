@@ -5,10 +5,11 @@ const CategorySection = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/categories")
+    fetch("https://book-universe-server.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);
+
   return (
     <div className="p-12">
       <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">Categories</p>

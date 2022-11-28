@@ -65,7 +65,7 @@ const Signup = () => {
 
   const saveBuyer = (name, email) => {
     const buyer = { name, email };
-    fetch("http://localhost:4000/buyers", {
+    fetch("https://book-universe-server.vercel.app/buyers", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -79,7 +79,7 @@ const Signup = () => {
   };
   const saveSeller = (name, email, verification) => {
     const seller = { name, email, verification };
-    fetch("http://localhost:4000/sellers", {
+    fetch("https://book-universe-server.vercel.app/sellers", {
       method: "POST",
       headers: {
         "content-type": "application/json",

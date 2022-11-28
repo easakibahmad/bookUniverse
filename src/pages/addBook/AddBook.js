@@ -42,7 +42,7 @@ const AddBook = () => {
     // form.reset();
 
     if (category === "Classics") {
-      fetch("http://localhost:4000/classics", {
+      fetch("https://book-universe-server.vercel.app/classics", {
         method: "POST",
         headers: {
           "content-type": "application/json",

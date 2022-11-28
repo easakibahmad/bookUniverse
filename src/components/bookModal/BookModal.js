@@ -27,7 +27,7 @@ const BookModal = ({ booksDetail, setBooksDetail }) => {
       location,
     };
 
-    fetch("http://localhost:4000/bookings", {
+    fetch("https://book-universe-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

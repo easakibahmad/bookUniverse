@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
             <Classics></Classics>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:4000/classics"),
+        loader: () => fetch("https://book-universe-server.vercel.app/classics"),
       },
       {
         path: "/category/63801372f12837a2b8673401",
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
             <Horror></Horror>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:4000/horror"),
+        loader: () => fetch("https://book-universe-server.vercel.app/horror"),
       },
       {
         path: "/category/63801372f12837a2b8673402",
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             <Fantasy></Fantasy>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:4000/fantasy"),
+        loader: () => fetch("https://book-universe-server.vercel.app/fantasy"),
       },
       {
         path: "/login",
@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/reportedItems",
         element: <ReportedItems></ReportedItems>,
-        loader: () => fetch("http://localhost:4000/bookings"),
+        loader: () => fetch("https://book-universe-server.vercel.app/bookings"),
       },
       {
         path: "/dashboard/addbook",
