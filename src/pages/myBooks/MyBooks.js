@@ -84,6 +84,35 @@ const MyBooks = () => {
         });
     }
   };
+
+  const handleUpdateClassic = (id) => {
+    const advertise = "advertise";
+    const proceedToAdvertise = window.confirm("Are you sure to advertise?");
+    if (proceedToAdvertise) {
+      fetch(`http://localhost:4000/classics/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ add: advertise }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.acknowledged) {
+            toast.success("Advertised successfully!!");
+            const remaining = classicData.filter((bk) => bk._id !== id);
+            // console.log(remaining);
+            const newReview = classicData.find((bk) => bk._id === id);
+            // console.log(newReview);
+            const newlyUpdates = [newReview, ...remaining];
+            setClassicData(newlyUpdates);
+            // console.log(newlyUpdates);
+          }
+        });
+    }
+  };
+
   return (
     <div>
       <div className="my-8">
@@ -110,7 +139,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Available</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Advertise</button>
+                    <button
+                      onClick={() => handleUpdateClassic(item._id)}
+                      className="btn btn-sm "
+                    >
+                      Advertise
+                    </button>
                   </td>
                   <td>
                     <button
