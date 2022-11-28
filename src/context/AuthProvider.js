@@ -17,6 +17,8 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isBuyerMail, setIsBuyerMail] = useState(false);
+  const [isSellerMail, setIsSellerMail] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
@@ -62,6 +64,10 @@ const AuthProvider = ({ children }) => {
     logIn,
     logOut,
     createUser,
+    isBuyerMail,
+    setIsBuyerMail,
+    isSellerMail,
+    setIsSellerMail,
   };
 
   return (

@@ -10,7 +10,13 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const { createUser, setLoading, updateUserProfile } = useContext(AuthContext);
+  const {
+    setIsSellerMail,
+    setIsBuyerMail,
+    createUser,
+    setLoading,
+    updateUserProfile,
+  } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -75,6 +81,7 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setIsBuyerMail(true);
       });
   };
   const saveSeller = (name, email, verification) => {
@@ -89,6 +96,7 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setIsSellerMail(true);
       });
   };
 

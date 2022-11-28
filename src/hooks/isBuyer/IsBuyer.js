@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 const useBuyer = (email) => {
-  const [isBuyerMail, setIsBuyerMail] = useState(false);
+  const { isBuyerMail, setIsBuyerMail } = useContext(AuthContext);
   useEffect(() => {
     if (email) {
       fetch(`http://localhost:4000/buyers/${email}`)
@@ -10,7 +11,7 @@ const useBuyer = (email) => {
           setIsBuyerMail(data.isBuyerMail);
         });
     }
-  }, [email]);
+  }, [email, setIsBuyerMail]);
   return [isBuyerMail];
 };
 
