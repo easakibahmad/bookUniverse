@@ -15,6 +15,7 @@ import AllBuyers from "../pages/allBuyers/AllBuyers";
 import MyBooks from "../pages/myBooks/MyBooks";
 import MyBookings from "../pages/myBookings/MyBookings";
 import ReportedItems from "../components/reportedItems/ReportedItems";
+import AddBook from "../pages/addBook/AddBook";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/reportedItems",
         element: <ReportedItems></ReportedItems>,
         loader: () => fetch("http://localhost:4000/bookings"),
+      },
+      {
+        path: "/dashboard/addbook",
+        element: <AddBook></AddBook>,
       },
     ],
   },

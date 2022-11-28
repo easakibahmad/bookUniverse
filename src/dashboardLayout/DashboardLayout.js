@@ -50,7 +50,7 @@ const DashboardLayout = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="underline" to="">
+                  <Link className="underline" to="/dashboard/addbook">
                     Add a book
                   </Link>
                 </li>
