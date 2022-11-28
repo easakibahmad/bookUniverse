@@ -31,62 +31,65 @@ const AddBook = () => {
       description,
       condition,
       phoneNumber,
+      email: user?.email,
     };
 
     console.log(book);
     // form.reset();
 
-    fetch("http://localhost:4000/classics", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(book),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          toast.success("Added Successfully!!");
-          form.reset();
-        }
+    if (category === "Classics") {
+      fetch("http://localhost:4000/classics", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(book),
       })
-      .catch((err) => console.log(err));
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Added Successfully!!");
+            form.reset();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
 
-    // if (category === "Fantasy") {
-    //   fetch("http://localhost:4000/fantasy", {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(book),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       if (data.acknowledged) {
-    //         toast.success("Added Successfully!!");
-    //         form.reset();
-    //       }
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
+    if (category === "Fantasy") {
+      fetch("http://localhost:4000/fantasy", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(book),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Added Successfully!!");
+            form.reset();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
 
-    // if (category === "Horror") {
-    //   fetch("http://localhost:4000/horror", {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(book),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       if (data.acknowledged) {
-    //         toast.success("Added Successfully!!");
-    //         form.reset();
-    //       }
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
+    if (category === "Horror") {
+      fetch("http://localhost:4000/horror", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(book),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Added Successfully!!");
+            form.reset();
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
