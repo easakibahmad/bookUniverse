@@ -1,35 +1,47 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../../context/AuthProvider";
 
 const AddBook = () => {
+  const { user } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
 
-    const picture = form.pictureUrl.value;
-    const price = form.price.value;
-    const placeName = form.placename.value;
-    const tripDetails = form.tripDetails.value;
-    const rating = form.rating.value;
+    const img = form.pictureUrl.value;
+    const name = form.bookName.value;
+    const location = form.location.value;
+    const originalPrice = form.originalPrice.value;
+    const resellPrice = form.resellPrice.value;
+    const yearsOfUsed = form.purchaseYear.value;
+    const description = form.description.value;
+    const condition = form.selectConditionOption.value;
+    const category = form.selectCategoryOption.value;
+    const phoneNumber = form.phoneNumber.value;
 
-    const service = {
-      picture,
-      price,
-      placeName,
-      tripDetails,
-      rating,
-      date: new Date(),
+    const book = {
+      img,
+      name,
+      location,
+      originalPrice,
+      resellPrice,
+      yearsOfUsed,
+      postedTime: new Date(),
+      sellerName: user?.displayName,
+      description,
+      condition,
+      phoneNumber,
     };
 
-    // console.log(service);
+    console.log(book);
     // form.reset();
 
-    fetch("https://the-adventurer-server.vercel.app/service", {
+    fetch("http://localhost:4000/classics", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(service),
+      body: JSON.stringify(book),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -39,6 +51,42 @@ const AddBook = () => {
         }
       })
       .catch((err) => console.log(err));
+
+    // if (category === "Fantasy") {
+    //   fetch("http://localhost:4000/fantasy", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(book),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.acknowledged) {
+    //         toast.success("Added Successfully!!");
+    //         form.reset();
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
+
+    // if (category === "Horror") {
+    //   fetch("http://localhost:4000/horror", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(book),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.acknowledged) {
+    //         toast.success("Added Successfully!!");
+    //         form.reset();
+    //       }
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
   };
 
   return (
@@ -50,7 +98,7 @@ const AddBook = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="placename"
+            name="bookName"
             placeholder="book name"
             className="input input-bordered my-2 input-accent w-full "
             required
@@ -81,7 +129,7 @@ const AddBook = () => {
               <span className="label-text text-black">Condition</span>
             </label>
             <select
-              name="selectOption"
+              name="selectConditionOption"
               className="select select-bordered w-full"
             >
               <option value="Good">Good</option>
@@ -100,7 +148,7 @@ const AddBook = () => {
           <input
             type="number"
             placeholder="purchase year(between 1-5)"
-            name="purchase year"
+            name="purchaseYear"
             className="input input-bordered my-2 input-accent w-full"
             required
           />
@@ -116,7 +164,7 @@ const AddBook = () => {
               <span className="label-text text-black">Select a category</span>
             </label>
             <select
-              name="selectOption"
+              name="selectCategoryOption"
               className="select select-bordered w-full"
             >
               <option value="Classics">Classics</option>
@@ -132,7 +180,7 @@ const AddBook = () => {
           ></textarea>
           <div className="flex justify-center">
             <button className="bg-black text-white px-3 py-2 mb-12 font-bold mt-2 rounded-md text-sm">
-              Add book
+              Add a book
             </button>
 
             <Toaster
