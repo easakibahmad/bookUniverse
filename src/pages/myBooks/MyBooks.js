@@ -103,10 +103,64 @@ const MyBooks = () => {
             toast.success("Advertised successfully!!");
             const remaining = classicData.filter((bk) => bk._id !== id);
             // console.log(remaining);
-            const newReview = classicData.find((bk) => bk._id === id);
+            const newData = classicData.find((bk) => bk._id === id);
             // console.log(newReview);
-            const newlyUpdates = [newReview, ...remaining];
+            const newlyUpdates = [newData, ...remaining];
             setClassicData(newlyUpdates);
+            // console.log(newlyUpdates);
+          }
+        });
+    }
+  };
+  const handleUpdateFantasy = (id) => {
+    const advertise = "advertise";
+    const proceedToAdvertise = window.confirm("Are you sure to advertise?");
+    if (proceedToAdvertise) {
+      fetch(`http://localhost:4000/fantasy/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ add: advertise }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.acknowledged) {
+            toast.success("Advertised successfully!!");
+            const remaining = fantasyData.filter((bk) => bk._id !== id);
+            // console.log(remaining);
+            const newData = fantasyData.find((bk) => bk._id === id);
+            // console.log(newReview);
+            const newlyUpdates = [newData, ...remaining];
+            setFantasyData(newlyUpdates);
+            // console.log(newlyUpdates);
+          }
+        });
+    }
+  };
+  const handleUpdateHorror = (id) => {
+    const advertise = "advertise";
+    const proceedToAdvertise = window.confirm("Are you sure to advertise?");
+    if (proceedToAdvertise) {
+      fetch(`http://localhost:4000/horror/${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ add: advertise }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.acknowledged) {
+            toast.success("Advertised successfully!!");
+            const remaining = horrorData.filter((bk) => bk._id !== id);
+            // console.log(remaining);
+            const newData = horrorData.find((bk) => bk._id === id);
+            // console.log(newReview);
+            const newlyUpdates = [newData, ...remaining];
+            setHorrorData(newlyUpdates);
             // console.log(newlyUpdates);
           }
         });
@@ -184,7 +238,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Available</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Advertise</button>
+                    <button
+                      onClick={() => handleUpdateFantasy(item._id)}
+                      className="btn btn-sm"
+                    >
+                      Advertise
+                    </button>
                   </td>
                   <td>
                     <button
@@ -224,7 +283,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Available</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Advertise</button>
+                    <button
+                      onClick={() => handleUpdateHorror(item._id)}
+                      className="btn btn-sm"
+                    >
+                      Advertise
+                    </button>
                   </td>
                   <td>
                     <button
