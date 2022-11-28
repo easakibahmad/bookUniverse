@@ -12,6 +12,9 @@ import PrivateRoute from "../privateRoute/PrivateRoute";
 import DashboardLayout from "../dashboardLayout/DashboardLayout";
 import AllSellers from "../pages/allSellers/AllSellers";
 import AllBuyers from "../pages/allBuyers/AllBuyers";
+import MyBooks from "../pages/myBooks/MyBooks";
+import MyBookings from "../pages/myBookings/MyBookings";
+import ReportedItems from "../components/reportedItems/ReportedItems";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +81,19 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/allbuyers",
         element: <AllBuyers></AllBuyers>,
+      },
+      {
+        path: "/dashboard/mybooks",
+        element: <MyBooks></MyBooks>,
+      },
+      {
+        path: "/dashboard/mybookings",
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: "/dashboard/reportedItems",
+        element: <ReportedItems></ReportedItems>,
+        loader: () => fetch("http://localhost:4000/bookings"),
       },
     ],
   },

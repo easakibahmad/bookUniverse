@@ -8,7 +8,7 @@ const SingleCategory = ({ item }) => {
     <div className="border border-black rounded">
       <Link to={`/category/${_id}`} className="mb-0">
         <img src={img} className="w-full sm:h-36 lg:h-52" alt="" />
-        <p className="p-2 category-p lg:text-2xl bg-black text-white">
+        <p className="p-2 underline category-p lg:text-2xl bg-black text-white">
           {category}
         </p>
       </Link>

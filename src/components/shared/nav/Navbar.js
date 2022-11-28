@@ -1,11 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
+import useAdmin from "../../../hooks/isAdmin/IsAdmin";
+import useBuyer from "../../../hooks/isBuyer/IsBuyer";
+import useSeller from "../../../hooks/isSeller/IsSeller";
 
 const Navbar = () => {
   const [category, setCategory] = useState([]);
 
   const { user, logOut } = useContext(AuthContext);
+  const admin = useAdmin(user?.email);
+  const seller = useSeller(user?.email);
+  const buyer = useBuyer(user?.email);
 
   const navigate = useNavigate();
 
@@ -46,9 +52,21 @@ const Navbar = () => {
 
       {user?.uid && (
         <>
-          <li>
-            <Link to="/dashboard/allsellers">Dashboard</Link>
-          </li>
+          {admin[0] && (
+            <li>
+              <Link to="/dashboard/allsellers">Dashboard</Link>
+            </li>
+          )}
+          {seller[0] && (
+            <li>
+              <Link to="/dashboard/mybooks">Dashboard</Link>
+            </li>
+          )}
+          {buyer[0] && (
+            <li>
+              <Link to="/dashboard/mybookings">Dashboard</Link>
+            </li>
+          )}
           <li>
             <Link onClick={handleLogOut}>Logout</Link>
           </li>

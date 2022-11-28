@@ -31,7 +31,8 @@ const Signup = () => {
           if (selectOption === "Buyer") {
             saveBuyer(name, email);
           } else {
-            saveSeller(name, email);
+            let verification = "not verified";
+            saveSeller(name, email, verification);
           }
           console.log("updated");
         })
@@ -76,8 +77,8 @@ const Signup = () => {
         console.log(data);
       });
   };
-  const saveSeller = (name, email) => {
-    const seller = { name, email };
+  const saveSeller = (name, email, verification) => {
+    const seller = { name, email, verification };
     fetch("http://localhost:4000/sellers", {
       method: "POST",
       headers: {
