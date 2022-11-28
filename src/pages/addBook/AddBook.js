@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -50,6 +52,7 @@ const AddBook = () => {
           if (data.acknowledged) {
             toast.success("Added Successfully!!");
             form.reset();
+            navigate("/dashboard/mybooks");
           }
         })
         .catch((err) => console.log(err));
@@ -68,6 +71,7 @@ const AddBook = () => {
           if (data.acknowledged) {
             toast.success("Added Successfully!!");
             form.reset();
+            navigate("/dashboard/mybooks");
           }
         })
         .catch((err) => console.log(err));
@@ -86,6 +90,7 @@ const AddBook = () => {
           if (data.acknowledged) {
             toast.success("Added Successfully!!");
             form.reset();
+            navigate("/dashboard/mybooks");
           }
         })
         .catch((err) => console.log(err));
