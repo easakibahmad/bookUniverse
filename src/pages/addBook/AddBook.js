@@ -34,6 +34,7 @@ const AddBook = () => {
       condition,
       phoneNumber,
       email: user?.email,
+      add: "not advertise",
     };
 
     console.log(book);
