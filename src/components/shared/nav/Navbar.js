@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
-import Dashboard from "../../dashboard/Dashboard";
 
 const Navbar = () => {
   const [category, setCategory] = useState([]);
@@ -48,7 +47,7 @@ const Navbar = () => {
       {user?.uid && (
         <>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard/allsellers">Dashboard</Link>
           </li>
           <li>
             <Link onClick={handleLogOut}>Logout</Link>

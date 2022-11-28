@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../components/dashboard/Dashboard";
 import Layout from "../layout/Layout";
 import Blogs from "../pages/blogs/Blogs";
 import Classics from "../pages/classics/Classics";
@@ -11,6 +10,8 @@ import NotFoundRoute from "../pages/notFound/NotFoundRoute";
 import Signup from "../pages/signup/Signup";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import DashboardLayout from "../dashboardLayout/DashboardLayout";
+import AllSellers from "../pages/allSellers/AllSellers";
+import AllBuyers from "../pages/allBuyers/AllBuyers";
 
 export const router = createBrowserRouter([
   {
@@ -71,8 +72,12 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        path: "/dashboard/allsellers",
+        element: <AllSellers></AllSellers>,
+      },
+      {
+        path: "/dashboard/allbuyers",
+        element: <AllBuyers></AllBuyers>,
       },
     ],
   },

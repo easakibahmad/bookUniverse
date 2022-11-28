@@ -28,6 +28,11 @@ const Signup = () => {
     const handleProfileInfo = () => {
       updateUserProfile(profile)
         .then(() => {
+          if (selectOption === "Buyer") {
+            saveBuyer(name, email);
+          } else {
+            saveSeller(name, email);
+          }
           console.log("updated");
         })
         .catch((error) => {
@@ -54,6 +59,35 @@ const Signup = () => {
       .catch((error) => {
         console.log(error);
         setError(error.message);
+      });
+  };
+
+  const saveBuyer = (name, email) => {
+    const buyer = { name, email };
+    fetch("http://localhost:4000/buyers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(buyer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+  const saveSeller = (name, email) => {
+    const seller = { name, email };
+    fetch("http://localhost:4000/sellers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(seller),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
   };
 
@@ -98,7 +132,7 @@ const Signup = () => {
                   name="selectOption"
                   className="select select-bordered w-full"
                 >
-                  <option value="User">Buyers</option>
+                  <option value="Buyer">Buyer</option>
                   <option value="Seller">Seller</option>
                 </select>
               </div>

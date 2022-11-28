@@ -45,6 +45,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        saveUser(user.displayName, user.email);
         navigate(from, { replace: true });
       })
 
@@ -53,6 +54,20 @@ const Login = () => {
       });
   };
 
+  const saveUser = (name, email) => {
+    const buyer = { name, email };
+    fetch("http://localhost:4000/buyers", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(buyer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div className=" sm:p-16 py-4 shadow-md">
       <div className="hero">
