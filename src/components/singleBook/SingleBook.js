@@ -21,10 +21,7 @@ const SingleBook = ({ item, setBooksDetail }) => {
         <img className="w-full sm:h-48 h-64" src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          {name}
-          <div className="badge badge-secondary">NEW</div>
-        </h2>
+        <h2 className="card-title">{name}</h2>
         <p>
           <span className="text-sm">posted time:</span>{" "}
           {postedTime.slice(0, 10)}

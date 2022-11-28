@@ -35,6 +35,7 @@ const AddBook = () => {
       phoneNumber,
       email: user?.email,
       add: "not advertise",
+      status: "available",
     };
 
     console.log(book);

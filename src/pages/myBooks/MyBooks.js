@@ -6,6 +6,7 @@ const MyBooks = () => {
   const [classicData, setClassicData] = useState([]);
   const [fantasyData, setFantasyData] = useState([]);
   const [horrorData, setHorrorData] = useState([]);
+
   const { user } = useContext(AuthContext);
   useEffect(() => {
     fetch(`http://localhost:4000/classicsSpecific?email=${user?.email}`)
@@ -128,6 +129,7 @@ const MyBooks = () => {
           // console.log(data);
           if (data.acknowledged) {
             toast.success("Advertised successfully!!");
+
             const remaining = fantasyData.filter((bk) => bk._id !== id);
             // console.log(remaining);
             const newData = fantasyData.find((bk) => bk._id === id);
@@ -195,7 +197,7 @@ const MyBooks = () => {
                   <td>
                     <button
                       onClick={() => handleUpdateClassic(item._id)}
-                      className="btn btn-sm "
+                      className="btn btn-sm"
                     >
                       Advertise
                     </button>
