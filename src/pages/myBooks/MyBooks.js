@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyBooks = () => {
   const [classicData, setClassicData] = useState([]);
@@ -29,6 +30,60 @@ const MyBooks = () => {
         setHorrorData(data);
       });
   }, [user?.email]);
+
+  const handleDeleteClassic = (id) => {
+    const proceedToDelete = window.confirm("Are you sure to delete?");
+    if (proceedToDelete) {
+      fetch(`http://localhost:4000/classics/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.deletedCount > 0) {
+            toast.success("One Book deleted successfully!!");
+            const remaining = classicData.filter((bk) => bk._id !== id);
+            setClassicData(remaining);
+          }
+        });
+    }
+  };
+
+  const handleDeleteFantasy = (id) => {
+    const proceedToDelete = window.confirm("Are you sure to delete?");
+    if (proceedToDelete) {
+      fetch(`http://localhost:4000/fantasy/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.deletedCount > 0) {
+            toast.success("One Book deleted successfully!!");
+            const remaining = fantasyData.filter((bk) => bk._id !== id);
+            setFantasyData(remaining);
+          }
+        });
+    }
+  };
+
+  const handleDeleteHorror = (id) => {
+    const proceedToDelete = window.confirm("Are you sure to delete?");
+    if (proceedToDelete) {
+      fetch(`http://localhost:4000/horror/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.deletedCount > 0) {
+            toast.success("One Book deleted successfully!!");
+            const remaining = horrorData.filter((bk) => bk._id !== id);
+            setHorrorData(remaining);
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="my-8">
@@ -58,7 +113,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Advertise</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Delete</button>
+                    <button
+                      onClick={() => handleDeleteClassic(item._id)}
+                      className="btn btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -93,7 +153,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Advertise</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Delete</button>
+                    <button
+                      onClick={() => handleDeleteFantasy(item._id)}
+                      className="btn btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -128,7 +193,12 @@ const MyBooks = () => {
                     <button className="btn btn-sm">Advertise</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm">Delete</button>
+                    <button
+                      onClick={() => handleDeleteHorror(item._id)}
+                      className="btn btn-sm"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -136,6 +206,18 @@ const MyBooks = () => {
           </table>
         </div>
       </div>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 2000,
+        }}
+      />
     </div>
   );
 };
